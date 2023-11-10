@@ -1,22 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd5ud8aletlad"]
+[gd_scene load_steps=12 format=3 uid="uid://cd5ud8aletlad"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dhwcw"]
-[ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/Player.png" id="2_5uqbu"]
+[ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/player.png" id="2_1cei3"]
+[ext_resource type="Texture2D" uid="uid://cihqgcakei82e" path="res://Assets/player-single.png" id="3_4fwea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cm2l0"]
-atlas = ExtResource("2_5uqbu")
+atlas = ExtResource("2_1cei3")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wh77"]
-atlas = ExtResource("2_5uqbu")
+atlas = ExtResource("2_1cei3")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opvwk"]
-atlas = ExtResource("2_5uqbu")
+atlas = ExtResource("2_1cei3")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvigx"]
-atlas = ExtResource("2_5uqbu")
+atlas = ExtResource("2_1cei3")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ejmu3"]
@@ -40,6 +41,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77lx2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_obj2m"]
+emission_shape = 1
+emission_sphere_radius = 6.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+initial_velocity_min = -4.0
+initial_velocity_max = 4.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.270588, 0.270588, 0.270588, 1)
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0n47"]
 size = Vector2(64, 64)
 
@@ -53,6 +69,16 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ejmu3")
 autoplay = "default"
 frame_progress = 0.133436
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_77lx2")
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(2.01644, 2.07841)
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_obj2m")
+texture = ExtResource("3_4fwea")
+lifetime = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_r0n47")
