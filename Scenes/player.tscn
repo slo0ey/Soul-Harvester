@@ -1,84 +1,93 @@
-[gd_scene load_steps=12 format=3 uid="uid://cd5ud8aletlad"]
+[gd_scene load_steps=8 format=3 uid="uid://cd5ud8aletlad"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dhwcw"]
-[ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/player.png" id="2_1cei3"]
-[ext_resource type="Texture2D" uid="uid://cihqgcakei82e" path="res://Assets/player-single.png" id="3_4fwea"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cm2l0"]
-atlas = ExtResource("2_1cei3")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wh77"]
-atlas = ExtResource("2_1cei3")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opvwk"]
-atlas = ExtResource("2_1cei3")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvigx"]
-atlas = ExtResource("2_1cei3")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ejmu3"]
-resource_local_to_scene = true
-animations = [{
-"frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_cm2l0")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_3wh77")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_opvwk")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_bvigx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_77lx2"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_obj2m"]
-emission_shape = 1
-emission_sphere_radius = 6.0
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-initial_velocity_min = -4.0
-initial_velocity_max = 4.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-color = Color(0.270588, 0.270588, 0.270588, 1)
-hue_variation_min = 1.0
-hue_variation_max = 1.0
+[ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/player_default.png" id="3_nbnwn"]
+[ext_resource type="Texture2D" uid="uid://crkpiykirr60v" path="res://Assets/player_bg.png" id="3_o4u8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0n47"]
 size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_qwb8f"]
+resource_name = "default"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePlayer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteBG:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_6wfn1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritePlayer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteBG:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfekq"]
+_data = {
+"RESET": SubResource("Animation_6wfn1"),
+"default": SubResource("Animation_qwb8f")
+}
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_dhwcw")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-9.53674e-07, -9.53674e-07)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_ejmu3")
-autoplay = "default"
-frame_progress = 0.133436
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-show_behind_parent = true
-material = SubResource("CanvasItemMaterial_77lx2")
-position = Vector2(-9.53674e-07, -9.53674e-07)
-scale = Vector2(2.01644, 2.07841)
-amount = 2
-process_material = SubResource("ParticleProcessMaterial_obj2m")
-texture = ExtResource("3_4fwea")
-lifetime = 0.3
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_r0n47")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_kfekq")
+}
+
+[node name="SpriteBG" type="Sprite2D" parent="."]
+texture = ExtResource("3_o4u8r")
+hframes = 4
+vframes = 5
+
+[node name="SpritePlayer" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_nbnwn")
+hframes = 4
