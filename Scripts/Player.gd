@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-@onready var sprite_player = $SpritePlayer
-@onready var sprite_bg = $SpriteBG
+@onready var sprite_player := $SpritePlayer
+@onready var sprite_bg := $SpriteBG
 
-const SPEED := 250
+const MOVE_SPEED := 250
+const BG_ROTATE_SPEED := PI * 3
 
 func _physics_process(delta):
 	var direction := move_direction()
@@ -15,6 +16,8 @@ func _physics_process(delta):
 		apply_flip(true)
 	elif direction.x > 0:
 		apply_flip(false)
+	
+	rotate_bg(delta)
 	
 	move_and_slide()
 
@@ -33,4 +36,7 @@ func apply_flip(flip: bool):
 	sprite_player.flip_h = flip
 
 func apply_acceleration(base: float, dir: float, delta: float) -> float:
-	return move_toward(base, dir * SPEED, delta * 1000)
+	return move_toward(base, dir * MOVE_SPEED, delta * 1000)
+
+func rotate_bg(delta: float):
+	sprite_bg.rotate(delta * BG_ROTATE_SPEED)

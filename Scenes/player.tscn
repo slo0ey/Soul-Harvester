@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cd5ud8aletlad"]
+[gd_scene load_steps=10 format=3 uid="uid://cd5ud8aletlad"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dhwcw"]
-[ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/player_default.png" id="3_nbnwn"]
-[ext_resource type="Texture2D" uid="uid://crkpiykirr60v" path="res://Assets/player_bg.png" id="3_o4u8r"]
+[ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/image/player_default.png" id="2_wil4h"]
+[ext_resource type="Texture2D" uid="uid://crkpiykirr60v" path="res://Assets/image/player_bg.png" id="3_h4tlm"]
+[ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="4_an4pp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0n47"]
 size = Vector2(64, 64)
@@ -69,6 +70,18 @@ _data = {
 "default": SubResource("Animation_qwb8f")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pnw2t"]
+emission_shape = 1
+emission_sphere_radius = 25.0
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 60, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.5
+scale_max = 0.5
+color = Color(0.694118, 0, 0.784314, 0.384314)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
@@ -86,12 +99,20 @@ libraries = {
 [node name="SpritePlayer" type="Sprite2D" parent="."]
 z_index = 10
 scale = Vector2(2, 2)
-texture = ExtResource("3_nbnwn")
+texture = ExtResource("2_wil4h")
 hframes = 4
 
 [node name="SpriteBG" type="Sprite2D" parent="."]
-modulate = Color(0.682353, 0, 0.792157, 1)
+modulate = Color(0.588235, 0.262745, 1, 1)
 z_index = 8
-texture = ExtResource("3_o4u8r")
+texture = ExtResource("3_h4tlm")
 hframes = 4
 vframes = 5
+
+[node name="Trails" type="GPUParticles2D" parent="."]
+position = Vector2(0, 15)
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_pnw2t")
+texture = ExtResource("4_an4pp")
+speed_scale = 1.35
+randomness = 0.5
