@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjgvslwj6g3e4"]
+[gd_scene load_steps=11 format=3 uid="uid://bjgvslwj6g3e4"]
 
 [ext_resource type="Theme" uid="uid://bdvqttox02ees" path="res://Resources/ui_theme.tres" id="1_rtqjh"]
 [ext_resource type="PackedScene" uid="uid://dn0cox5eg0rr2" path="res://Scenes/tilemap.tscn" id="1_wfsyx"]
 [ext_resource type="Script" path="res://Scripts/DifficultyMenu.gd" id="2_bqa4e"]
 [ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="2_kj573"]
+[ext_resource type="Script" path="res://Scripts/SoundButton.gd" id="3_1wlmu"]
+[ext_resource type="AudioStream" uid="uid://cb1o0jv8mc761" path="res://Assets/sound/button_hover.ogg" id="4_1ce6n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0uxiv"]
 font_size = 40
@@ -79,6 +81,8 @@ theme_override_colors/font_pressed_color = Color(0.384314, 0.627451, 0.639216, 1
 theme_override_colors/font_hover_color = Color(0.384314, 0.627451, 0.639216, 1)
 theme_override_colors/font_focus_color = Color(0.596078, 0.980392, 1, 1)
 text = "Easy"
+script = ExtResource("3_1wlmu")
+hover_sound = ExtResource("4_1ce6n")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button_Normal" type="Button" parent="."]
@@ -99,6 +103,8 @@ theme_override_colors/font_pressed_color = Color(0.360784, 0.6, 0.4, 1)
 theme_override_colors/font_hover_color = Color(0.360784, 0.6, 0.4, 1)
 theme_override_colors/font_focus_color = Color(0.6, 1, 0.666667, 1)
 text = "Normal"
+script = ExtResource("3_1wlmu")
+hover_sound = ExtResource("4_1ce6n")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button_Hard" type="Button" parent="."]
@@ -119,6 +125,8 @@ theme_override_colors/font_pressed_color = Color(0.6, 0.360784, 0.360784, 1)
 theme_override_colors/font_hover_color = Color(0.6, 0.360784, 0.360784, 1)
 theme_override_colors/font_focus_color = Color(1, 0.6, 0.6, 1)
 text = "Hard"
+script = ExtResource("3_1wlmu")
+hover_sound = ExtResource("4_1ce6n")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button_Extreme" type="Button" parent="."]
@@ -139,6 +147,8 @@ theme_override_colors/font_pressed_color = Color(0.6, 0.360784, 0.545098, 1)
 theme_override_colors/font_hover_color = Color(0.6, 0.360784, 0.545098, 1)
 theme_override_colors/font_focus_color = Color(1, 0.6, 0.905882, 1)
 text = "Extreme"
+script = ExtResource("3_1wlmu")
+hover_sound = ExtResource("4_1ce6n")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button_Back" type="Button" parent="."]
@@ -155,6 +165,8 @@ offset_bottom = -0.0400085
 grow_horizontal = 2
 grow_vertical = 2
 text = "Back to Menu"
+script = ExtResource("3_1wlmu")
+hover_sound = ExtResource("4_1ce6n")
 metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" parent="." instance=ExtResource("1_wfsyx")]
