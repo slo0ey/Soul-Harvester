@@ -11,11 +11,9 @@ class_name SoundButton
 func _ready():
 	hover_sound_player.stream = hover_sound
 	click_sound_player.stream = click_sound
-
-
-func _on_mouse_entered():
-	hover_sound_player.play()
-
-
-func _on_pressed():
-	click_sound_player.play()
+	
+	mouse_entered.connect(func(): hover_sound_player.play())
+	pressed.connect(func(): click_sound_player.play())
+	
+	add_child(hover_sound_player)
+	add_child(click_sound_player)
