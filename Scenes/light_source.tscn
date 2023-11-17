@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6ip8r6p86j6g"]
+
+[ext_resource type="Material" uid="uid://m0s11t00brvs" path="res://Resources/light_material.tres" id="1_sjldf"]
+[ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="2_08lr5"]
+
+[node name="LightSource" type="PointLight2D"]
+color = Color(0.647059, 0.631373, 0, 1)
+energy = 0.5
+texture = ExtResource("2_08lr5")
+texture_scale = 8.0
+
+[node name="LightEffect" type="GPUParticles2D" parent="."]
+amount = 2
+process_material = ExtResource("1_sjldf")
+texture = ExtResource("2_08lr5")
+lifetime = 2.0
+randomness = 1.0

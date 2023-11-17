@@ -116,3 +116,5 @@ process_material = SubResource("ParticleProcessMaterial_pnw2t")
 texture = ExtResource("4_an4pp")
 speed_scale = 1.35
 randomness = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="."]

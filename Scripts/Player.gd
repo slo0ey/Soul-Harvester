@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
+@export var camera_area: Area2D
+
 @onready var sprite_player := $SpritePlayer
 @onready var sprite_bg := $SpriteBG
+@onready var camera := $Camera2D
 
 const MOVE_SPEED := 250
 const BG_ROTATE_SPEED := PI * 3
@@ -31,6 +34,7 @@ func move_direction() -> Vector2:
 		return direction.normalized()
 	else:
 		return direction
+		
 
 func apply_flip(flip: bool):
 	sprite_player.flip_h = flip
