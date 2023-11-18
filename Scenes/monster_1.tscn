@@ -1,7 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8g0h1eemeyit"]
+[gd_scene load_steps=19 format=3 uid="uid://b8g0h1eemeyit"]
 
 [ext_resource type="Texture2D" uid="uid://c8gw6o5tm30if" path="res://Assets/image/Monster1Pack.png" id="1_c7wtd"]
+[ext_resource type="Script" path="res://Scripts/Entities/Monster1.gd" id="1_y5euv"]
 [ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="2_g6gio"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="4_4q1ry"]
+[ext_resource type="Script" path="res://Scripts/States/Monster1_Idle.gd" id="5_e87nr"]
+[ext_resource type="Script" path="res://Scripts/States/Monster1_Follow.gd" id="6_46v5f"]
+[ext_resource type="Script" path="res://Scripts/States/Monster1_Attack.gd" id="7_jmrks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frg00"]
 size = Vector2(16, 16)
@@ -9,10 +14,11 @@ size = Vector2(16, 16)
 [sub_resource type="Animation" id="Animation_wpoqx"]
 resource_name = "Attack"
 length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("SpriteMonster:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Attack/PointLight2D:energy")
+tracks/1/path = NodePath("SpriteMonster/AttackFlameLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +42,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/Attack/PointLight2D:texture_scale")
+tracks/2/path = NodePath("SpriteMonster/AttackFlameLight:texture_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -46,76 +52,13 @@ tracks/2/keys = {
 "values": [3.0, 2.0, 1.5]
 }
 
-[sub_resource type="Animation" id="Animation_pi3h3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Attack/PointLight2D:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/Attack/PointLight2D:texture_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/Charge/PointLight2D:energy")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/Charge/PointLight2D:texture_scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-
 [sub_resource type="Animation" id="Animation_iute1"]
 resource_name = "Charge"
 length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("SpriteMonster:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -127,7 +70,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/Charge/PointLight2D:energy")
+tracks/1/path = NodePath("SpriteMonster/ChargedFlameLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -139,11 +82,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/Charge/PointLight2D:texture_scale")
+tracks/2/path = NodePath("SpriteMonster/ChargedFlameLight:texture_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.4, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5, 0.5),
 "update": 0,
 "values": [1.0, 1.2, 1.5]
@@ -157,7 +100,7 @@ step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("SpriteMonster:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -165,6 +108,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_s6uh6"]
+resource_name = "Death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
 [sub_resource type="Animation" id="Animation_06ouf"]
@@ -175,7 +134,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("SpriteMonster:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -183,6 +142,85 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_yc2tm"]
+resource_name = "Hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_pi3h3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteMonster/AttackFlameLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteMonster/AttackFlameLight:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteMonster/ChargedFlameLight:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteMonster/ChargedFlameLight:texture_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_3ekrc"]
@@ -193,7 +231,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("SpriteMonster:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -201,38 +239,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [18, 19, 20, 21]
-}
-
-[sub_resource type="Animation" id="Animation_yc2tm"]
-resource_name = "Hit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [22, 23]
-}
-
-[sub_resource type="Animation" id="Animation_s6uh6"]
-resource_name = "Death"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8cdyh"]
@@ -247,35 +253,53 @@ _data = {
 "Walk": SubResource("Animation_3ekrc")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4vqp"]
+size = Vector2(32, 32)
+
 [node name="Monster-1" type="CharacterBody2D"]
+script = ExtResource("1_y5euv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_frg00")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Walk"
 libraries = {
 "": SubResource("AnimationLibrary_8cdyh")
 }
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpriteMonster" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("1_c7wtd")
 hframes = 4
 vframes = 9
 
-[node name="Attack" type="Node2D" parent="Sprite2D"]
-
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D/Attack"]
+[node name="AttackFlameLight" type="PointLight2D" parent="SpriteMonster"]
 position = Vector2(-16, 0)
 color = Color(0.882353, 0.0392157, 0.701961, 1)
 energy = 3.0
 texture = ExtResource("2_g6gio")
 texture_scale = 3.0
 
-[node name="Charge" type="Node2D" parent="Sprite2D"]
-
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D/Charge"]
+[node name="ChargedFlameLight" type="PointLight2D" parent="SpriteMonster"]
 position = Vector2(8, 0)
 color = Color(1, 0.529412, 1, 1)
 texture = ExtResource("2_g6gio")
+
+[node name="FlameAttackHitbox" type="Area2D" parent="SpriteMonster"]
+collision_layer = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="SpriteMonster/FlameAttackHitbox"]
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_d4vqp")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_4q1ry")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_e87nr")
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("6_46v5f")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("7_jmrks")

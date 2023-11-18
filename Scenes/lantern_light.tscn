@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://m0s11t00brvs" path="res://Resources/light_material.tres" id="1_sjldf"]
 [ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="2_08lr5"]
 
-[node name="LightSource" type="PointLight2D"]
+[node name="LanternLight" type="PointLight2D"]
 color = Color(0.647059, 0.631373, 0, 1)
 energy = 0.5
 texture = ExtResource("2_08lr5")
