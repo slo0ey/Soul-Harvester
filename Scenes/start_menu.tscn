@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/SoundButton.gd" id="3_3slip"]
 [ext_resource type="PackedScene" uid="uid://dn0cox5eg0rr2" path="res://Scenes/tilemap.tscn" id="3_mwe8i"]
 [ext_resource type="AudioStream" uid="uid://cb1o0jv8mc761" path="res://Assets/sound/button_hover.ogg" id="4_1oapj"]
-[ext_resource type="PackedScene" uid="uid://b6ip8r6p86j6g" path="res://Scenes/light_source.tscn" id="7_wjmdv"]
+[ext_resource type="PackedScene" uid="uid://b6ip8r6p86j6g" path="res://Scenes/lantern_light.tscn" id="7_wjmdv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_35e2o"]
 font_size = 40

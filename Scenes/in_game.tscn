@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfk0xebiov76k"]
 
 [ext_resource type="PackedScene" uid="uid://dn0cox5eg0rr2" path="res://Scenes/tilemap.tscn" id="1_jjc07"]
-[ext_resource type="PackedScene" uid="uid://b6ip8r6p86j6g" path="res://Scenes/light_source.tscn" id="2_ky0ly"]
+[ext_resource type="PackedScene" uid="uid://b6ip8r6p86j6g" path="res://Scenes/lantern_light.tscn" id="2_ky0ly"]
 [ext_resource type="PackedScene" uid="uid://cd5ud8aletlad" path="res://Scenes/player.tscn" id="3_dwibi"]
 
 [node name="InGame" type="Node2D"]
@@ -18,52 +18,52 @@ scale = Vector2(1.16456, 1.0625)
 color = Color(0.0941176, 0.0784314, 0.145098, 1)
 polygon = PackedVector2Array(-896, -512, -896, -4.75342, -896, 512, 366.442, 512, 1632, 512, 1632, -512)
 
-[node name="LightSource" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(320, 128)
 
-[node name="LightSource2" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight2" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(144, 240)
 
-[node name="LightSource3" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight3" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(496, 240)
 
-[node name="LightSource4" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight4" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(48, -96)
 
-[node name="LightSource5" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight5" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(320, -208)
 
-[node name="LightSource6" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight6" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(592, -96)
 
-[node name="LightSource7" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight7" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(816, -144)
 
-[node name="LightSource8" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight8" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(688, 144)
 
-[node name="LightSource9" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight9" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(1168, 160)
 
-[node name="LightSource10" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight10" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(1280, 320)
 
-[node name="LightSource11" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight11" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(1072, -112)
 
-[node name="LightSource12" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight12" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(-48, 144)
 
-[node name="LightSource13" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight13" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(-160, -144)
 
-[node name="LightSource14" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight14" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(-432, -112)
 
-[node name="LightSource15" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight15" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(-528, 160)
 
-[node name="LightSource16" parent="TileMap" instance=ExtResource("2_ky0ly")]
+[node name="LanternLight16" parent="TileMap" instance=ExtResource("2_ky0ly")]
 position = Vector2(-624, 320)
 
 [node name="Player" parent="." instance=ExtResource("3_dwibi")]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/DifficultyMenu.gd" id="2_bqa4e"]
 [ext_resource type="Script" path="res://Scripts/SoundButton.gd" id="3_1wlmu"]
 [ext_resource type="AudioStream" uid="uid://cb1o0jv8mc761" path="res://Assets/sound/button_hover.ogg" id="4_1ce6n"]
-[ext_resource type="PackedScene" uid="uid://b6ip8r6p86j6g" path="res://Scenes/light_source.tscn" id="6_3fq70"]
+[ext_resource type="PackedScene" uid="uid://b6ip8r6p86j6g" path="res://Scenes/lantern_light.tscn" id="6_3fq70"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0uxiv"]
 font_size = 40
