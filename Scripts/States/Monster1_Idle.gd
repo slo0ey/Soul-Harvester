@@ -18,6 +18,7 @@ func _physics_process(delta):
 	
 	if target:
 		var direction = target.global_position - actor.global_position
+		var distance = direction.length()
 		
-		if direction.length_squared() < 15:
+		if distance < 160:
 			target_detected.emit()

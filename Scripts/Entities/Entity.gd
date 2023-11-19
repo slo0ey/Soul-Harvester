@@ -5,12 +5,9 @@ extends CharacterBody2D
 @export var acceleration: float = 10.0
 @export var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var animator: AnimationPlayer = get_node("AnimationPlayer")
-@onready var sprite: Sprite2D = get_node("Sprite")
-@onready var fsm: StateMachine = get_node("StateMachine")
-
-func _ready():
-	print_tree_pretty()
+@onready var animator: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite
+@onready var fsm: StateMachine = $StateMachine
 
 func get_input_direction() -> Vector2:
 	var direction := Vector2(

@@ -36,9 +36,9 @@ func on_attack_end():
 	var direction = target.global_position - actor.global_position
 	var distance = direction.length_squared()
 	
-	if distance >= 15:
+	if distance >= 160:
 		attack_end_target_undetected.emit()
-	elif distance >= 3:
+	elif distance >= 50:
 		attack_end_target_detected.emit()
 	else:
 		actor.animator.play("Attack")

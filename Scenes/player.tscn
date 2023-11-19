@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd5ud8aletlad"]
+[gd_scene load_steps=11 format=3 uid="uid://cd5ud8aletlad"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dhwcw"]
 [ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/image/player_default.png" id="2_wil4h"]
 [ext_resource type="Texture2D" uid="uid://crkpiykirr60v" path="res://Assets/image/player_bg.png" id="3_h4tlm"]
 [ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="4_an4pp"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="5_xfotv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0n47"]
 size = Vector2(64, 64)
@@ -119,3 +120,6 @@ speed_scale = 1.35
 randomness = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_xfotv")
