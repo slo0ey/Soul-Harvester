@@ -1,32 +1,44 @@
-extends State
 class_name Monster1_Attack
+extends State
 
-@export var monster: Monster1
-var player: CharacterBody2D
+const Utils = preload("res://Scripts/Utils.gd")
 
-func Enter():
-	monster.animation_player.animation_finished.connect(on_attack_end)
-	monster.animation_player.play("Attack")
+signal attack_end_target_undetected
+signal attack_end_target_detected
 
-func Physics_Update(_delta):
-	var direction = player.global_position - monster.global_position
+func _ready():
+	set_physics_process(false)
+
+func _enter_state():
+	set_physics_process(true)
+	actor.animator.animation_finished.connect(on_attack_end)
+	actor.animator.play("Attack")
+
+func _exit_state():
+	set_physics_process(false)
+	actor.animator.animation_finished.disconnect(on_attack_end)
+
+func _physics_process(delta):
+	var target = actor.target
+	var direction = target.global_position - actor.global_position
 	var distance = direction.length_squared()
 	
-	if monster.flame_attack_hitbox.overlaps_body(player):
+	if actor.flame_attack_hitbox.overlaps_body(target):
 		print("It hurts...")
 	
 	if direction.x < 0:
-		monster.apply_flip(true)
+		Utils.apply_flip(actor.sprite, true)
 	else:
-		monster.apply_flip(false)
+		Utils.apply_flip(actor.sprite, false)
 
 func on_attack_end():
-	var direction = player.global_position - monster.global_position
+	var target = actor.target
+	var direction = target.global_position - actor.global_position
 	var distance = direction.length_squared()
 	
-	if distance < 15:
-		Transitioned.emit(self, "Idle")
+	if distance >= 15:
+		attack_end_target_undetected.emit()
 	elif distance >= 3:
-		Transitioned.emit(self, "Follow")
+		attack_end_target_detected.emit()
 	else:
-		monster.animation_player.play("Attack")
+		actor.animator.play("Attack")

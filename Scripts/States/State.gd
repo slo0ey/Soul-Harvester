@@ -1,16 +1,13 @@
-extends Node
 class_name State
+extends Node
 
-signal Transitioned
+@export var actor: Entity
 
-func Enter():
+signal state_changed
+
+func _enter_state():
 	pass
 
-func Exit():
+func _exit_state():
 	pass
-
-func Update(_delta: float):
-	pass
-
-func Physics_Update(_delta: float):
-	pass
+	

@@ -1,15 +1,23 @@
-extends State
 class_name Monster1_Idle
+extends State
 
-@export var monster: Monster1
-var player: CharacterBody2D
+signal target_detected
 
-func Enter():
-	player = get_tree().get_first_node_in_group("Player")
-	monster.animation_player.play("Walk")
+func _ready():
+	set_physics_process(false)
+
+func _enter_state():
+	set_physics_process(true)
+	actor.animator.play("Walk")
+
+func _exit_state():
+	set_physics_process(false)
 
 func _physics_process(delta):
-	var direction = player.global_position - monster.global_position
+	var target = actor.target
 	
-	if direction.length_squared() < 15:
-		Transitioned.emit(self, "Follow")
+	if target:
+		var direction = target.global_position - actor.global_position
+		
+		if direction.length_squared() < 15:
+			target_detected.emit()

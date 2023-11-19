@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="2_g6gio"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="4_4q1ry"]
 [ext_resource type="Script" path="res://Scripts/States/Monster1_Idle.gd" id="5_e87nr"]
-[ext_resource type="Script" path="res://Scripts/States/Monster1_Follow.gd" id="6_46v5f"]
+[ext_resource type="Script" path="res://Scripts/States/Monster1_Chase.gd" id="6_wwkcq"]
 [ext_resource type="Script" path="res://Scripts/States/Monster1_Attack.gd" id="7_jmrks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frg00"]
@@ -14,11 +14,10 @@ size = Vector2(16, 16)
 [sub_resource type="Animation" id="Animation_wpoqx"]
 resource_name = "Attack"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteMonster/AttackFlameLight:energy")
+tracks/1/path = NodePath("Sprite/AttackFlameLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -42,7 +41,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpriteMonster/AttackFlameLight:texture_scale")
+tracks/2/path = NodePath("Sprite/AttackFlameLight:texture_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -58,7 +57,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,7 +69,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteMonster/ChargedFlameLight:energy")
+tracks/1/path = NodePath("Sprite/ChargedFlameLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -82,7 +81,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpriteMonster/ChargedFlameLight:texture_scale")
+tracks/2/path = NodePath("Sprite/ChargedFlameLight:texture_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -100,7 +99,7 @@ step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -116,7 +115,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -134,7 +133,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -150,7 +149,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -165,31 +164,31 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [18]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpriteMonster/AttackFlameLight:energy")
+tracks/1/path = NodePath("Sprite/AttackFlameLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.0]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpriteMonster/AttackFlameLight:texture_scale")
+tracks/2/path = NodePath("Sprite/AttackFlameLight:texture_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -201,19 +200,19 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpriteMonster/ChargedFlameLight:energy")
+tracks/3/path = NodePath("Sprite/ChargedFlameLight:energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpriteMonster/ChargedFlameLight:texture_scale")
+tracks/4/path = NodePath("Sprite/ChargedFlameLight:texture_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -231,7 +230,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpriteMonster:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -258,48 +257,56 @@ size = Vector2(32, 32)
 
 [node name="Monster-1" type="CharacterBody2D"]
 script = ExtResource("1_y5euv")
+gravity = 9.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_frg00")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Walk"
 libraries = {
 "": SubResource("AnimationLibrary_8cdyh")
 }
 
-[node name="SpriteMonster" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("1_c7wtd")
 hframes = 4
 vframes = 9
+frame = 18
 
-[node name="AttackFlameLight" type="PointLight2D" parent="SpriteMonster"]
+[node name="AttackFlameLight" type="PointLight2D" parent="Sprite"]
 position = Vector2(-16, 0)
 color = Color(0.882353, 0.0392157, 0.701961, 1)
-energy = 3.0
+energy = 0.0
 texture = ExtResource("2_g6gio")
 texture_scale = 3.0
 
-[node name="ChargedFlameLight" type="PointLight2D" parent="SpriteMonster"]
+[node name="ChargedFlameLight" type="PointLight2D" parent="Sprite"]
 position = Vector2(8, 0)
 color = Color(1, 0.529412, 1, 1)
+energy = 0.0
 texture = ExtResource("2_g6gio")
 
-[node name="FlameAttackHitbox" type="Area2D" parent="SpriteMonster"]
+[node name="FlameAttackHitbox" type="Area2D" parent="Sprite"]
 collision_layer = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="SpriteMonster/FlameAttackHitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Sprite/FlameAttackHitbox"]
 position = Vector2(-16, 0)
 shape = SubResource("RectangleShape2D_d4vqp")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_4q1ry")
+initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("5_e87nr")
+actor = NodePath("../..")
 
-[node name="Follow" type="Node" parent="StateMachine"]
-script = ExtResource("6_46v5f")
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_wwkcq")
+actor = NodePath("../..")
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
 script = ExtResource("7_jmrks")
+actor = NodePath("../..")

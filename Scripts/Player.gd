@@ -1,46 +1,25 @@
-extends CharacterBody2D
+class_name Player
+extends Entity
 
 @export var camera_area: Area2D
 
-@onready var sprite_player := $SpritePlayer
 @onready var sprite_bg := $SpriteBG
 @onready var camera := $Camera2D
 
-const MOVE_SPEED := 250
+const Utils = preload("res://Scripts/Utils.gd")
 const BG_ROTATE_SPEED := PI * 3
 
 func _physics_process(delta):
-	var direction := move_direction()
+	var direction = get_input_direction()
 	
-	velocity.x = apply_acceleration(velocity.x, direction.x, delta)
-	velocity.y = apply_acceleration(velocity.y, direction.y, delta)
+	velocity.x = move_toward(velocity.x, direction.x * speed, delta * 1000)
+	velocity.y = move_toward(velocity.y, direction.y * speed, delta * 1000)
 	
 	if direction.x < 0:
-		apply_flip(true)
+		Utils.apply_flip(sprite, true)
 	elif direction.x > 0:
-		apply_flip(false)
+		Utils.apply_flip(sprite, false)
 	
-	rotate_bg(delta)
+	sprite_bg.rotate(delta * BG_ROTATE_SPEED)
 	
 	move_and_slide()
-
-func move_direction() -> Vector2:
-	var direction := Vector2(
-		Input.get_axis("move_left", "move_right"),
-		Input.get_axis("move_up", "move_down")
-	)
-	
-	if direction:
-		return direction.normalized()
-	else:
-		return direction
-		
-
-func apply_flip(flip: bool):
-	sprite_player.flip_h = flip
-
-func apply_acceleration(base: float, dir: float, delta: float) -> float:
-	return move_toward(base, dir * MOVE_SPEED, delta * 1000)
-
-func rotate_bg(delta: float):
-	sprite_bg.rotate(delta * BG_ROTATE_SPEED)

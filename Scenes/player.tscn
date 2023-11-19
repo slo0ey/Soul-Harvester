@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePlayer:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +42,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpritePlayer:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -86,6 +86,7 @@ color = Color(0.694118, 0, 0.784314, 0.384314)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 script = ExtResource("1_dhwcw")
+speed = 250.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_r0n47")
@@ -96,7 +97,7 @@ libraries = {
 "": SubResource("AnimationLibrary_kfekq")
 }
 
-[node name="SpritePlayer" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 z_index = 10
 scale = Vector2(2, 2)
 texture = ExtResource("2_wil4h")

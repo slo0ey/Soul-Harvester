@@ -1,38 +1,18 @@
-extends CharacterBody2D
 class_name Monster1
+extends Enemy
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sprite_monster: Sprite2D = $SpriteMonster
+const Utils = preload("res://Scripts/Utils.gd")
+
 @onready var flame_attack_hitbox: Area2D = $SpriteMonster/FlameAttackHitbox
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+# States
+@onready var idle: Monster1_Idle = $StateMachine/Idle
+@onready var chase: Monster1_Chase = $StateMachine/Chase
+@onready var attack: Monster1_Attack = $StateMachine/Attack
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-
-func apply_flip(flip: bool):
-	if flip:
-		sprite_monster.apply_scale(Vector2(-1, 1))
-	else:
-		sprite_monster.apply_scale(Vector2(1, 1))
+func _ready():
+	idle.target_detected.connect(fsm.change_state.bind(chase))
+	chase.target_disappeared.connect(fsm.change_state.bind(idle))
+	chase.target_encounted.connect(fsm.change_state.bind(attack))
+	attack.attack_end_target_undetected.connect(fsm.change_state.bind(idle))
+	attack.attack_end_target_detected.connect(fsm.change_state.bind(chase))
