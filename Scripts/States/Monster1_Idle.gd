@@ -15,14 +15,13 @@ func _exit_state():
 
 func _physics_process(delta):
 	var target = actor.target
+	actor.velocity.y += actor.gravity
 	
 	if target:
 		var direction = target.global_position - actor.global_position
 		var distance = direction.length()
-		
-		
-		
+
 		if distance < 160:
 			target_detected.emit()
 	
-	actor.velocity.y += actor.gravity
+	actor.move_and_slide()
