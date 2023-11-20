@@ -88,3 +88,33 @@ position = Vector2(72, 319)
 
 [node name="Monster-5" parent="Monsters" instance=ExtResource("4_010oe")]
 position = Vector2(997, 301)
+
+[node name="Monster-6" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(1130, 138)
+
+[node name="Monster-7" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(952, 60)
+
+[node name="Monster-8" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(522, -146)
+
+[node name="Monster-9" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(-593, 245)
+
+[node name="Monster-10" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(-603, -110)
+
+[node name="Monster-11" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(-234, 252)
+
+[node name="Monster-12" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(-367, 117)
+
+[node name="Monster-13" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(-373, -106)
+
+[node name="Monster-14" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(324, -107)
+
+[node name="Monster-15" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(96, -228)

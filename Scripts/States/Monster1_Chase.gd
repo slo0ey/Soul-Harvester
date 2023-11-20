@@ -22,24 +22,25 @@ func _physics_process(delta):
 	var distance = direction.length()
 	var new_eye_direction = actor.eye_direction
 	
+	direction.y = 0
+	direction = direction.normalized()
+	
+	actor.velocity.x = move_toward(actor.velocity.x, direction.x * actor.speed, delta * 1000)
+	actor.velocity.y += actor.gravity
+	
+	if actor.velocity.x < 0:
+		new_eye_direction = Vector2.LEFT
+	elif actor.velocity.x > 0:
+		new_eye_direction = Vector2.RIGHT
+	
+	if new_eye_direction != actor.eye_direction:
+		Utils.apply_flip(actor, true)
+		actor.eye_direction = new_eye_direction
+	
+	actor.move_and_slide()
+	
 	if distance >= 160:
 		target_undetected.emit()
 	elif distance < 50:
-		target_encounted.emit()
-	else:
-		direction.y = 0
-		direction = direction.normalized()
-		
-		actor.velocity.x = move_toward(actor.velocity.x, direction.x * actor.speed, delta * 1000)
-		actor.velocity.y += actor.gravity
-		
-		if actor.velocity.x < 0:
-			new_eye_direction = Vector2.LEFT
-		elif actor.velocity.x > 0:
-			new_eye_direction = Vector2.RIGHT
-		
-		if new_eye_direction != actor.eye_direction:
-			Utils.apply_flip(actor, true)
-			actor.eye_direction = new_eye_direction
-		
-		actor.move_and_slide()
+		if actor.is_on_floor():
+			target_encounted.emit()

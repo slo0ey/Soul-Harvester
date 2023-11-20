@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd5ud8aletlad"]
+[gd_scene load_steps=12 format=3 uid="uid://cd5ud8aletlad"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dhwcw"]
 [ext_resource type="Texture2D" uid="uid://b6cye32wlkoru" path="res://Assets/image/player_default.png" id="2_wil4h"]
@@ -83,6 +83,9 @@ scale_min = 0.5
 scale_max = 0.5
 color = Color(0.694118, 0, 0.784314, 0.384314)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvo6l"]
+size = Vector2(32, 32)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
@@ -123,3 +126,6 @@ randomness = 0.5
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("5_xfotv")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mvo6l")
