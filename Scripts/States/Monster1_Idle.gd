@@ -20,5 +20,9 @@ func _physics_process(delta):
 		var direction = target.global_position - actor.global_position
 		var distance = direction.length()
 		
+		
+		
 		if distance < 160:
 			target_detected.emit()
+	
+	actor.velocity.y += actor.gravity

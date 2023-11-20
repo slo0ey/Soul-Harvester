@@ -14,6 +14,7 @@ size = Vector2(16, 16)
 [sub_resource type="Animation" id="Animation_wpoqx"]
 resource_name = "Attack"
 length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -239,6 +240,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [18, 19, 20, 21]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/AttackFlameLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/ChargedFlameLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8cdyh"]
 _data = {
@@ -256,6 +281,7 @@ _data = {
 size = Vector2(32, 32)
 
 [node name="Monster-1" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_y5euv")
 gravity = 9.8
 

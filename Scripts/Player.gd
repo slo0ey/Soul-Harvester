@@ -9,7 +9,8 @@ extends Entity
 const Utils = preload("res://Scripts/Utils.gd")
 const BG_ROTATE_SPEED := PI * 3
 
-var eye_direction = Vector2.RIGHT
+func _ready():
+	eye_direction = Vector2.RIGHT
 
 func _physics_process(delta):
 	var direction = get_input_direction()
@@ -24,7 +25,7 @@ func _physics_process(delta):
 		new_eye_direction = Vector2.RIGHT
 	
 	if new_eye_direction != eye_direction:
-		Utils.apply_flip(sprite, true)
+		Utils.apply_flip(self, true)
 		eye_direction = new_eye_direction
 	
 	sprite_bg.rotate(delta * BG_ROTATE_SPEED)

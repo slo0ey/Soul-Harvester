@@ -9,6 +9,8 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite
 @onready var fsm: StateMachine = $StateMachine
 
+var eye_direction: Vector2 = Vector2.LEFT
+
 func get_input_direction() -> Vector2:
 	var direction := Vector2(
 		Input.get_axis("move_left", "move_right"),

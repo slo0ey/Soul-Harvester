@@ -71,7 +71,20 @@ position = Vector2(-624, 320)
 
 [node name="Player" parent="." instance=ExtResource("3_dwibi")]
 position = Vector2(320, 192)
-speed = 100.0
 
-[node name="Monster-1" parent="." instance=ExtResource("4_010oe")]
+[node name="Monsters" type="Node2D" parent="."]
+
+[node name="Monster-1" parent="Monsters" instance=ExtResource("4_010oe")]
 position = Vector2(776, 344)
+
+[node name="Monster-2" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(-115, 148)
+
+[node name="Monster-3" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(748, 145)
+
+[node name="Monster-4" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(72, 319)
+
+[node name="Monster-5" parent="Monsters" instance=ExtResource("4_010oe")]
+position = Vector2(997, 301)
