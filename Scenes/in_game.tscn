@@ -78,25 +78,25 @@ position = Vector2(320, 192)
 position = Vector2(776, 344)
 
 [node name="Monster-2" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-115, 148)
+position = Vector2(-120, 152)
 
 [node name="Monster-3" parent="Monsters" instance=ExtResource("4_010oe")]
 position = Vector2(748, 145)
 
 [node name="Monster-4" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(72, 319)
+position = Vector2(72, 328)
 
 [node name="Monster-5" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(997, 301)
+position = Vector2(1136, 328)
 
 [node name="Monster-6" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(1130, 138)
+position = Vector2(1312, 360)
 
 [node name="Monster-7" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(952, 60)
+position = Vector2(896, 168)
 
 [node name="Monster-8" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(522, -146)
+position = Vector2(584, -56)
 
 [node name="Monster-9" parent="Monsters" instance=ExtResource("4_010oe")]
 position = Vector2(-593, 245)
@@ -105,16 +105,16 @@ position = Vector2(-593, 245)
 position = Vector2(-603, -110)
 
 [node name="Monster-11" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-234, 252)
+position = Vector2(-216, 344)
 
 [node name="Monster-12" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-367, 117)
+position = Vector2(-392, 312)
 
 [node name="Monster-13" parent="Monsters" instance=ExtResource("4_010oe")]
 position = Vector2(-373, -106)
 
 [node name="Monster-14" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(324, -107)
+position = Vector2(328, -72)
 
 [node name="Monster-15" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(96, -228)
+position = Vector2(160, -72)

@@ -15,6 +15,8 @@ func _exit_state():
 
 func _physics_process(delta):
 	var target = actor.target
+	
+	actor.velocity.x = 0
 	actor.velocity.y += actor.gravity
 	
 	if target:
