@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8g0h1eemeyit"]
+[gd_scene load_steps=18 format=3 uid="uid://b8g0h1eemeyit"]
 
 [ext_resource type="Texture2D" uid="uid://c8gw6o5tm30if" path="res://Assets/image/Monster1Pack.png" id="1_c7wtd"]
 [ext_resource type="Script" path="res://Scripts/Entities/Monster1.gd" id="1_y5euv"]
@@ -7,9 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/States/Monster1_Idle.gd" id="5_e87nr"]
 [ext_resource type="Script" path="res://Scripts/States/Monster1_Chase.gd" id="6_wwkcq"]
 [ext_resource type="Script" path="res://Scripts/States/Monster1_Attack.gd" id="7_jmrks"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_frg00"]
-size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_wpoqx"]
 resource_name = "Attack"
@@ -285,8 +282,8 @@ collision_layer = 2
 script = ExtResource("1_y5euv")
 gravity = 9.8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_frg00")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -8, 8, -8, 16, 0, 16, 8, -8, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Walk"
