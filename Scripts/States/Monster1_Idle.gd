@@ -8,7 +8,7 @@ func _ready():
 
 func _enter_state():
 	set_physics_process(true)
-	actor.animator.play("Walk")
+	actor.animator.play("Idle")
 
 func _exit_state():
 	set_physics_process(false)

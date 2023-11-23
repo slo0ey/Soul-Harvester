@@ -3,8 +3,7 @@ extends State
 
 const Utils = preload("res://Scripts/Utils.gd")
 
-signal attack_end_target_undetected
-signal attack_end_target_detected
+signal attack_end_target_follow
 
 func _ready():
 	set_physics_process(false)
@@ -22,10 +21,8 @@ func _physics_process(delta):
 	var distance = direction.length()
 	var new_eye_direction = actor.eye_direction
 	
-	if distance >= 160:
-		attack_end_target_undetected.emit()
-	elif distance >= 50:
-		attack_end_target_detected.emit()
+	if distance >= 50:
+		attack_end_target_follow.emit()
 	else:
 		if direction.x < 0:
 			new_eye_direction = Vector2.LEFT
