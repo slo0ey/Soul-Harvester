@@ -10,7 +10,7 @@ func _ready():
 func _enter_state():
 	set_physics_process(true)
 	actor.animator.play("Explode")
-	actor.animator.animation_finished.connect(queue_free)
+	actor.animator.animation_finished.connect(on_animation_finish)
 	
 	spawn_balls()
 
@@ -29,3 +29,6 @@ func spawn_balls():
 		poison_ball.mode = i
 		poison_ball.global_position = spawn_pos
 		actor.get_window().get_node("InGame").add_child(poison_ball)
+
+func on_animation_finish(_name):
+	actor.queue_free()
