@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8g0h1eemeyit"]
+[gd_scene load_steps=19 format=3 uid="uid://b8g0h1eemeyit"]
 
 [ext_resource type="Texture2D" uid="uid://c8gw6o5tm30if" path="res://Assets/image/Monster1Pack.png" id="1_c7wtd"]
 [ext_resource type="Script" path="res://Scripts/Entities/Monster1.gd" id="1_y5euv"]
@@ -157,6 +157,22 @@ tracks/0/keys = {
 "values": [22, 23]
 }
 
+[sub_resource type="Animation" id="Animation_t3yxi"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+
 [sub_resource type="Animation" id="Animation_pi3h3"]
 length = 0.001
 tracks/0/type = "value"
@@ -270,6 +286,7 @@ _data = {
 "Death": SubResource("Animation_s6uh6"),
 "Flying": SubResource("Animation_06ouf"),
 "Hit": SubResource("Animation_yc2tm"),
+"Idle": SubResource("Animation_t3yxi"),
 "RESET": SubResource("Animation_pi3h3"),
 "Walk": SubResource("Animation_3ekrc")
 }
@@ -286,7 +303,7 @@ gravity = 9.8
 polygon = PackedVector2Array(-8, -8, 8, -8, 16, 0, 16, 8, -8, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Walk"
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_8cdyh")
 }
@@ -313,6 +330,7 @@ texture = ExtResource("2_g6gio")
 
 [node name="FlameAttackHitbox" type="Area2D" parent="Sprite"]
 collision_layer = 2
+collision_mask = 4
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Sprite/FlameAttackHitbox"]
 position = Vector2(-16, 0)

@@ -16,5 +16,4 @@ func _ready():
 	idle.target_detected.connect(fsm.change_state.bind(chase))
 	chase.target_undetected.connect(fsm.change_state.bind(idle))
 	chase.target_encounted.connect(fsm.change_state.bind(attack))
-	attack.attack_end_target_undetected.connect(fsm.change_state.bind(idle))
-	attack.attack_end_target_detected.connect(fsm.change_state.bind(chase))
+	attack.attack_end_target_follow.connect(fsm.change_state.bind(chase))
