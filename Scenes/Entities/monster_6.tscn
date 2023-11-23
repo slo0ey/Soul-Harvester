@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnvxd6ffd3chu"]
+[gd_scene load_steps=17 format=3 uid="uid://bnvxd6ffd3chu"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/monster_6.gd" id="1_tpvmw"]
+[ext_resource type="Script" path="res://Scripts/Entities/Monster6.gd" id="1_s7qev"]
 [ext_resource type="Texture2D" uid="uid://c3rlmr2g87qku" path="res://Assets/image/Monster6Pack.png" id="2_1hwmh"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="2_rm5gk"]
+[ext_resource type="Texture2D" uid="uid://rbla2mcbvky0" path="res://Assets/vfx/neutral_light.png" id="3_0w771"]
+[ext_resource type="Script" path="res://Scripts/States/Monster6_Idle.gd" id="5_fwc2p"]
+[ext_resource type="Script" path="res://Scripts/States/Monster6_Chase.gd" id="6_y3bbb"]
+[ext_resource type="Script" path="res://Scripts/States/Monster6_Ignite.gd" id="7_cby7g"]
+[ext_resource type="Script" path="res://Scripts/States/Monster6_Explode.gd" id="8_sy3jb"]
 
-[sub_resource type="Animation" id="Animation_m2m0u"]
+[sub_resource type="Animation" id="Animation_x8xxo"]
 resource_name = "Explode"
-length = 1.3
+length = 0.9
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -15,10 +20,120 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.55, 0.7, 0.85, 1, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+"values": [11, 12, 13, 14, 15, 16, 17, 31]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/ExplosionLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.0, 1.0, 0.5, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/ExplosionLight:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [4.0, 6.0, 4.0, 3.0, 2.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/ExplosionHitbox/HitboxShape:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.45, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, 12), Vector2(0, 12), Vector2(0, 16), Vector2(0, 20), Vector2(0, 24)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/ExplosionHitbox/HitboxShape:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.45, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(80, 56), Vector2(80, 40), Vector2(64, 40), Vector2(48, 32), Vector2(32, 24), Vector2(16, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/ExplosionHitbox:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.85),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_28dgg"]
+resource_name = "Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_w67bs"]
+resource_name = "Ignite"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_m2m0u"]
+resource_name = "Prepare Igniting"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_di27v"]
@@ -35,11 +150,72 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/ExplosionLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/ExplosionLight:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/ExplosionHitbox/HitboxShape:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/ExplosionHitbox/HitboxShape:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 56)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/ExplosionHitbox:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_y3f6d"]
 resource_name = "Walk"
-length = 0.6
+length = 1.2
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,7 +223,7 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -55,14 +231,23 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m4eam"]
 _data = {
-"Explode": SubResource("Animation_m2m0u"),
+"Explode": SubResource("Animation_x8xxo"),
+"Idle": SubResource("Animation_28dgg"),
+"Ignite": SubResource("Animation_w67bs"),
+"Prepare Igniting": SubResource("Animation_m2m0u"),
 "RESET": SubResource("Animation_di27v"),
 "Walk": SubResource("Animation_y3f6d")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt41q"]
+size = Vector2(80, 56)
+
 [node name="Monster-6" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_tpvmw")
+script = ExtResource("1_s7qev")
+speed = 60.0
+acceleration = 5.0
+gravity = 9.8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, -24, 0, -24, 16, -8, 16, 8, 8, 16, -16, 16, -16, -16)
@@ -78,5 +263,47 @@ texture = ExtResource("2_1hwmh")
 hframes = 4
 vframes = 8
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="ExplosionLight" type="PointLight2D" parent="Sprite"]
+position = Vector2(0, 16)
+color = Color(0.552941, 1, 0.337255, 1)
+energy = 0.0
+texture = ExtResource("3_0w771")
+texture_scale = 6.0
+
+[node name="ExplosionHitbox" type="Area2D" parent="Sprite"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Sprite/ExplosionHitbox"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_mt41q")
+
+[node name="PoisonBallSpawnPos" type="Node2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_rm5gk")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("5_fwc2p")
+actor = NodePath("../..")
+
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_y3bbb")
+actor = NodePath("../..")
+
+[node name="Ignite" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_cby7g")
+actor = NodePath("../..")
+
+[node name="Explode" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("8_sy3jb")
+actor = NodePath("../..")
+
+[node name="ExplosionAwaitTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 1.5
+one_shot = true
+
+[node name="FragmentSplatteringTimer" type="Timer" parent="."]

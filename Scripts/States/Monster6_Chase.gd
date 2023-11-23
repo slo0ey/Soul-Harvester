@@ -1,4 +1,4 @@
-class_name Monster1_Chase
+class_name Monster6_Chase
 extends State
 
 const Utils = preload("res://Scripts/Utils.gd")
@@ -41,8 +41,8 @@ func _physics_process(delta):
 	
 	actor.move_and_slide()
 	
-	if distance >= 160:
+	if distance >= 200:
 		target_undetected.emit()
-	elif distance < 50:
+	elif distance < 60:
 		if actor.is_on_floor():
 			target_encounted.emit()

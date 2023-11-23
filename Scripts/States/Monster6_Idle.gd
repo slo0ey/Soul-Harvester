@@ -1,4 +1,4 @@
-class_name Monster1_Idle
+class_name Monster6_Idle
 extends State
 
 signal target_detected
@@ -25,7 +25,7 @@ func _physics_process(delta):
 		var direction = target.global_position - actor.global_position
 		var distance = direction.length()
 
-		if distance < 160:
+		if distance < 200:
 			target_detected.emit()
 	
 	actor.move_and_slide()

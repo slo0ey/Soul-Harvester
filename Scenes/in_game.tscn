@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfk0xebiov76k"]
+[gd_scene load_steps=7 format=3 uid="uid://bfk0xebiov76k"]
 
 [ext_resource type="Script" path="res://Scripts/InGame.gd" id="1_hgmnj"]
 [ext_resource type="PackedScene" uid="uid://dn0cox5eg0rr2" path="res://Scenes/tilemap.tscn" id="1_jjc07"]
 [ext_resource type="PackedScene" uid="uid://b6ip8r6p86j6g" path="res://Scenes/lantern_light.tscn" id="2_ky0ly"]
 [ext_resource type="PackedScene" uid="uid://cd5ud8aletlad" path="res://Scenes/Entities/player.tscn" id="3_dwibi"]
 [ext_resource type="PackedScene" uid="uid://b8g0h1eemeyit" path="res://Scenes/Entities/monster_1.tscn" id="4_010oe"]
+[ext_resource type="PackedScene" uid="uid://bnvxd6ffd3chu" path="res://Scenes/Entities/monster_6.tscn" id="6_7mmuj"]
 
 [node name="InGame" type="Node2D"]
 script = ExtResource("1_hgmnj")
@@ -83,38 +84,11 @@ position = Vector2(-120, 152)
 [node name="Monster-3" parent="Monsters" instance=ExtResource("4_010oe")]
 position = Vector2(748, 145)
 
-[node name="Monster-4" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(72, 328)
+[node name="Monster-4" parent="Monsters" instance=ExtResource("6_7mmuj")]
+position = Vector2(1016, 304)
 
-[node name="Monster-5" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(1136, 328)
+[node name="Monster-5" parent="Monsters" instance=ExtResource("6_7mmuj")]
+position = Vector2(336, -80)
 
-[node name="Monster-6" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(1312, 360)
-
-[node name="Monster-7" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(896, 168)
-
-[node name="Monster-8" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(584, -56)
-
-[node name="Monster-9" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-593, 245)
-
-[node name="Monster-10" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-603, -110)
-
-[node name="Monster-11" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-216, 344)
-
-[node name="Monster-12" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-392, 312)
-
-[node name="Monster-13" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(-373, -106)
-
-[node name="Monster-14" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(328, -72)
-
-[node name="Monster-15" parent="Monsters" instance=ExtResource("4_010oe")]
-position = Vector2(160, -72)
+[node name="Monster-6" parent="Monsters" instance=ExtResource("6_7mmuj")]
+position = Vector2(-392, 304)
